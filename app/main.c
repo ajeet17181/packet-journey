@@ -1681,7 +1681,7 @@ setup_lpm(int socketid)
 			 "Unable to create the pktj LPM table"
 			 " on socket %d\n",
 			 socketid);
-
+#if 0
 	/* create the LPM6 table */
 	snprintf(s, sizeof(s), "IPV6_L3FWD_LPM_%d", socketid);
 
@@ -1694,6 +1694,7 @@ setup_lpm(int socketid)
 			 "Unable to create the pktj LPM6 table"
 			 " on socket %d\n",
 			 socketid);
+#endif
 }
 
 static int
