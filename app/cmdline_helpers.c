@@ -399,7 +399,7 @@ nic_stats_clear(struct cmdline* cl, portid_t port_id)
 void
 nic_xstats_display(struct cmdline* cl, portid_t port_id, int option)
 {
-	struct rte_eth_xstats* xstats;
+	struct rte_eth_xstat* xstats;
 	int len, ret, i;
 
 	len = rte_eth_xstats_get(port_id, NULL, 0);
@@ -418,7 +418,7 @@ nic_xstats_display(struct cmdline* cl, portid_t port_id, int option)
 		free(xstats);
 		return;
 	}
-
+#if 0 // ajeet
 	if (option) {
 		cmdline_printf(cl, "{\"portid\": %d, ", port_id);
 
@@ -438,7 +438,7 @@ nic_xstats_display(struct cmdline* cl, portid_t port_id, int option)
 			cmdline_printf(cl, "%s: %" PRIu64 "\n", xstats[i].name,
 				       xstats[i].value);
 	}
-
+#endif
 	free(xstats);
 }
 
