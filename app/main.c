@@ -400,7 +400,7 @@ static inline uint16_t
 get_ipv6_dst_port(void *ipv6_hdr, uint8_t portid,
 		  lookup6_struct_t *ipv6_pktj_lookup_struct)
 {
-	uint16_t next_hop;
+	uint8_t next_hop;
 	return (rte_lpm6_lookup(ipv6_pktj_lookup_struct,
 			     ((struct ipv6_hdr *)ipv6_hdr)->dst_addr,
 			     &next_hop) == 0)
@@ -459,7 +459,7 @@ get_dst_port(const struct lcore_conf* qconf,
 	     struct nei_entry* kni_neighbor)
 {
 	uint32_t next_hop;
-	uint16_t next_hop6;
+	uint8_t next_hop6;
 	struct ipv6_hdr *ipv6_hdr;
 	struct ether_hdr *eth_hdr;
 
@@ -1870,7 +1870,8 @@ init_port(uint8_t portid)
 
 	nb_rx_queue = get_port_n_rx_queues(portid);
 	// XXX the +1 is for the kni
-	nb_tx_queue = nb_rx_queue + 1;
+	// ajeet removed +1
+	nb_tx_queue = nb_rx_queue;
 	RTE_LOG(INFO, PKTJ1, "Creating queues: nb_rxq=%d nb_txq=%u...\n",
 		nb_rx_queue, nb_tx_queue);
 

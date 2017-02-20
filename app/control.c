@@ -540,7 +540,8 @@ neighbor6(neighbor_action_t action,
 	struct control_handle* handle = args;
 	assert(handle != NULL);
 	int s;
-	uint16_t nexthop_id, find_id;
+	uint16_t nexthop_id;
+	uint8_t  find_id;
 	int32_t socket_id = handle->socket_id;
 	char ipbuf[INET6_ADDRSTRLEN];
 

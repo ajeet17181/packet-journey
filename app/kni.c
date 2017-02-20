@@ -171,7 +171,7 @@ kni_egress(struct kni_port_params* p, uint32_t lcore_id)
 			return;
 		}
 		/* Burst tx to eth */
-		nb_tx = rte_eth_tx_burst(port_id, queue_num, pkts_burst,
+		nb_tx = rte_eth_tx_burst(port_id,0/* queue_num*/, pkts_burst,
 					 (uint16_t)num);
 		rte_kni_handle_request(p->kni[i]);
 		stats[lcore_id].nb_kni_rx += num;
