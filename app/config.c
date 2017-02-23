@@ -533,6 +533,7 @@ rate_limit_ipv6(cmdline_ipaddr_t* ip, uint32_t num, int socket_id)
 {
 	static uint16_t next_hop_count[NB_SOCKETS] = {0};
 	uint16_t next_hop = 0;
+	uint8_t next_hop_ipv6 = 0;
 
 	// store the rule so it can applied once
 	// it is added if it is not already
@@ -561,7 +562,7 @@ rate_limit_ipv6(cmdline_ipaddr_t* ip, uint32_t num, int socket_id)
 	rlimit6_lookup_table[socket_id][next_hop].num = num;
 
 	if (rte_lpm6_lookup(ipv6_pktj_lookup_struct[socket_id],
-			    ip->addr.ipv6.s6_addr, &next_hop) == 0) {
+			    ip->addr.ipv6.s6_addr, &next_hop_ipv6) == 0) {
 		// set the max packet rate for this neighbor
 		rlimit6_max[socket_id][next_hop] = num;
 	}
