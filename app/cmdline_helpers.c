@@ -418,13 +418,13 @@ nic_xstats_display(struct cmdline* cl, portid_t port_id, int option)
 		free(xstats);
 		return;
 	}
-#if 0 // ajeet
+
 	if (option) {
 		cmdline_printf(cl, "{\"portid\": %d, ", port_id);
 
 		for (i = 0; i < len; i++)
 			cmdline_printf(cl, "%s\"%s\": %" PRIu64,
-				       (i != 0) ? ", " : "", xstats[i].name,
+				       (i != 0) ? ", " : "", "",
 				       xstats[i].value);
 
 		cmdline_printf(cl, "}\n");
@@ -435,10 +435,10 @@ nic_xstats_display(struct cmdline* cl, portid_t port_id, int option)
 			       port_id);
 
 		for (i = 0; i < len; i++)
-			cmdline_printf(cl, "%s: %" PRIu64 "\n", xstats[i].name,
+			cmdline_printf(cl, "%s: %" PRIu64 "\n", "",
 				       xstats[i].value);
 	}
-#endif
+	
 	free(xstats);
 }
 

@@ -107,7 +107,9 @@
 
 void __wrap_cmdline_printf(const struct cmdline* cl, const char* fmt, ...);
 
+#ifdef __clang__
 #pragma clang diagnostic ignored "-Wformat-nonliteral"
+#endif
 #pragma GCC diagnostic ignored "-Wformat-nonliteral"
 void
 __wrap_cmdline_printf(const struct cmdline* cl, const char* fmt, ...)

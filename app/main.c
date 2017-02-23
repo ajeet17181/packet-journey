@@ -1663,7 +1663,9 @@ init_lcore_rx_queues(void)
 static void
 setup_lpm(int socketid)
 {
+#ifdef IPV6
 	struct rte_lpm6_config config6;
+#endif
 	struct rte_lpm_config config4;
 	char s[64];
 
@@ -1681,7 +1683,7 @@ setup_lpm(int socketid)
 			 "Unable to create the pktj LPM table"
 			 " on socket %d\n",
 			 socketid);
-#if 0
+#ifdef IPV6
 	/* create the LPM6 table */
 	snprintf(s, sizeof(s), "IPV6_L3FWD_LPM_%d", socketid);
 
