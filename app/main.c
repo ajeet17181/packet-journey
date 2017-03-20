@@ -1873,7 +1873,7 @@ init_port(uint8_t portid)
 	nb_rx_queue = get_port_n_rx_queues(portid);
 	// XXX the +1 is for the kni
 	// ajeet removed +1
-	nb_tx_queue = nb_rx_queue;
+	nb_tx_queue = nb_rx_queue + 1;
 	RTE_LOG(INFO, PKTJ1, "Creating queues: nb_rxq=%d nb_txq=%u...\n",
 		nb_rx_queue, nb_tx_queue);
 

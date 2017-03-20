@@ -162,7 +162,7 @@ kni_egress(struct kni_port_params* p, uint32_t lcore_id)
 
 	nb_kni = p->nb_kni;
 	port_id = p->port_id;
-	queue_num = 0; //p->tx_queue_id;
+	queue_num = p->tx_queue_id;
 	for (i = 0; i < nb_kni; i++) {
 		/* Burst rx from kni */
 		num = rte_kni_rx_burst(p->kni[i], pkts_burst, MAX_PKT_BURST);
